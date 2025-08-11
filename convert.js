@@ -27,36 +27,61 @@ document.addEventListener('DOMContentLoaded', () => {
             watchAdBtn.style.display = 'block';
             statusMessage.textContent = '';
         }
-    });
+    });watchAdBtn.addEventListener('click', () => {
+    if (!uploadedImage) {
+        statusMessage.textContent = 'Please upload an image first.';
+        statusMessage.style.color = 'red';
+        return;
+    }
 
-    watchAdBtn.addEventListener('click', () => {
-        if (!uploadedImage) {
-            statusMessage.textContent = 'Please upload an image first.';
+    statusMessage.textContent = 'Ad is loading...';
+    statusMessage.style.color = '#007bff';
+    watchAdBtn.disabled = true;
+
+    // =======================================================
+    // YOUR ADMOB CODE
+    //
+    // REPLACE 'ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY' WITH YOUR ACTUAL AD UNIT ID
+    const adMobAdUnitId = 'ca-app-pub-6721840281514656/9315246993';
+    
+    // This is a simulated ad loading and showing process.
+    // Your actual AdMob SDK will provide functions like this.
+    // This example sets up event listeners for a rewarded ad.
+    
+    // Load the ad
+    adMob.loadAd({ adUnitId: adMobAdUnitId })
+        .then(() => {
+            // Ad loaded successfully, now show it
+            adMob.showAd({ adUnitId: adMobAdUnitId })
+                .then(rewarded => {
+                    // Ad was watched successfully
+                    isAdWatchedSuccessfully = true;
+                    saveBtn.disabled = false;
+                    watchAdBtn.style.display = 'none';
+                    statusMessage.textContent = 'Ad watched successfully! You can now save your image.';
+                    statusMessage.style.color = 'green';
+                })
+                .catch(error => {
+                    // Ad was not watched successfully (e.g., user closed it early)
+                    isAdWatchedSuccessfully = false;
+                    saveBtn.disabled = true;
+                    watchAdBtn.disabled = false;
+                    statusMessage.textContent = 'Ad was not completed. Please try again.';
+                    statusMessage.style.color = 'red';
+                });
+        })
+        .catch(error => {
+            // Failed to load ad
+            isAdWatchedSuccessfully = false;
+            saveBtn.disabled = true;
+            watchAdBtn.disabled = false;
+            statusMessage.textContent = 'Ad failed to load. Please try again.';
             statusMessage.style.color = 'red';
-            return;
-        }
+        });
+    // =======================================================
+});
 
-        statusMessage.textContent = 'Ad is playing...';
-        statusMessage.style.color = '#007bff';
-        watchAdBtn.disabled = true;
 
-        setTimeout(() => {
-            const adSuccess = Math.random() > 0.3;
-            if (adSuccess) {
-                isAdWatchedSuccessfully = true;
-                saveBtn.disabled = false;
-                watchAdBtn.style.display = 'none';
-                statusMessage.textContent = 'Ad watched successfully! You can now save your image.';
-                statusMessage.style.color = 'green';
-            } else {
-                isAdWatchedSuccessfully = false;
-                saveBtn.disabled = true;
-                watchAdBtn.disabled = false;
-                statusMessage.textContent = 'Ad failed to load. Please try again.';
-                statusMessage.style.color = 'red';
-            }
-        }, 3000);
-    });
 
     saveBtn.addEventListener('click', () => {
         if (!isAdWatchedSuccessfully) {

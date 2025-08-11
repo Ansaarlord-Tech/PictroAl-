@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Format - PictroAI</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .image-preview-container {
+            display: none;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid #ddd;
+            padding-top: 2rem;
+        }
+        .image-preview-container h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PictroAI</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="info.html">Info</a>
+        </nav>
+    </header>
+    <main>
+        <div class="tool-section">
+            <h2>Convert Format</h2>
+            <label for="image-upload">Upload your image:</label>
+            <input type="file" id="image-upload" accept="image/*">
+            
+            <label for="convert-options">Choose new format:</label>
+            <select id="convert-options">
+                <option value="png">PNG</option>
+                <option value="jpg">JPG</option>
+                <option value="webp">WebP</option>
+                <option value="bmp">BMP</option>
+            </select>
+
+            <button id="watch-ad-btn">Watch Ad to Enable Save</button>
+            <button id="save-btn" disabled>Save Converted Image</button>
+            
+            <div id="status-message"></div>
+
+            <div id="preview-container" class="image-preview-container">
+                <h3>Selected Image</h3>
+                <img id="original-image-preview" class="image-preview" src="#" alt="Original Image">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 PictroAI. All rights reserved.</p>
+    </footer>
+    <script src="convert.js"></script>
+</body>
+</html>

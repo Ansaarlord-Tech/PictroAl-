@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resize Picture - PictroAI</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .custom-resize-inputs {
+            display: none;
+            margin-top: 1rem;
+        }
+        .image-preview-container {
+            display: none;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid #ddd;
+            padding-top: 2rem;
+        }
+        .image-preview-container h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PictroAI</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="info.html">Info</a>
+        </nav>
+    </header>
+    <main>
+        <div class="tool-section">
+            <h2>Resize Picture</h2>
+            <label for="image-upload">Upload your image:</label>
+            <input type="file" id="image-upload" accept="image/*">
+            
+            <label for="resize-options">Choose new size:</label>
+            <select id="resize-options">
+                <option value="original">Original Size</option>
+                <option value="1920x1080">Full HD (1920x1080)</option>
+                <option value="1280x720">HD (1280x720)</option>
+                <option value="800x600">SVGA (800x600)</option>
+                <option value="custom">Custom</option>
+            </select>
+
+            <div id="custom-resize-container" class="custom-resize-inputs">
+                <label for="custom-width">Custom Width (px):</label>
+                <input type="number" id="custom-width" placeholder="e.g., 600">
+                <label for="custom-height">Custom Height (px):</label>
+                <input type="number" id="custom-height" placeholder="e.g., 400">
+            </div>
+
+            <button id="watch-ad-btn">Watch Ad to Enable Save</button>
+            <button id="save-btn" disabled>Save Resized Image</button>
+
+            <div id="status-message"></div>
+
+            <div id="preview-container" class="image-preview-container">
+                <h3>Selected Image</h3>
+                <img id="original-image-preview" class="image-preview" src="#" alt="Original Image">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 PictroAI. All rights reserved.</p>
+    </footer>
+    <script src="resize.js"></script>
+</body>
+</html>

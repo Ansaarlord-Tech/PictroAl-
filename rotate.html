@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotate Picture - Pictrify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Pictrify</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="info.html">Info</a>
+        </nav>
+    </header>
+    <main>
+        <div class="tool-section">
+            <h2>Rotate Picture</h2>
+            <input type="file" id="file-input" accept="image/*">
+            
+            <div class="ad-container">
+                Ad space
+            </div>
+
+            <img id="preview-img" src="#" alt="Picture Preview" style="display:none;">
+            <canvas id="rotation-canvas" style="display:none;"></canvas>
+
+            <button id="rotate-left-btn">Rotate Left</button>
+            <button id="rotate-right-btn">Rotate Right</button>
+
+            <button id="ad-btn">Watch an Ad</button>
+            <button id="save-btn" disabled>Save</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Pictrify. All rights reserved.</p>
+    </footer>
+    <script src="rotate.js"></script>
+</body>
+</html>

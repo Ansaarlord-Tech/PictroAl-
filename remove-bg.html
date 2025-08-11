@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Background - Pictrify</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .canvas-container {
+            position: relative;
+            margin: 1rem auto;
+            border: 1px solid #ccc;
+        }
+        #bg-canvas, #draw-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            height: auto;
+        }
+        #bg-canvas { z-index: 1; }
+        #draw-canvas { z-index: 2; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pictrify</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="info.html">Info</a>
+        </nav>
+    </header>
+    <main>
+        <div class="tool-section">
+            <h2>Remove Background (Manual Eraser)</h2>
+            <p>Use your finger to erase the background.</p>
+            <input type="file" id="file-input" accept="image/*">
+            
+            <div class="canvas-container" style="display:none;">
+                <canvas id="bg-canvas"></canvas>
+                <canvas id="draw-canvas"></canvas>
+            </div>
+            
+            <button id="ad-btn" style="margin-top: 1rem;">Watch an Ad</button>
+            <button id="save-btn" disabled>Save</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Pictrify. All rights reserved.</p>
+    </footer>
+    <script src="remove-bg.js"></script>
+</body>
+</html>
